@@ -3,6 +3,7 @@ package com.myPaymentService.service;
 import com.myPaymentService.model.PaymentStuatus;
 import com.myPaymentService.paymentGateways.PaymentGatewayInterface;
 import com.myPaymentService.paymentGateways.RazorPayPaymentGateway;
+import com.razorpay.PaymentLink;
 import com.razorpay.RazorpayException;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.stereotype.Service;
@@ -21,15 +22,17 @@ public class PaymentService {
 //          String email=order.getEmailId();
 //          String PhoneNumber=order.getPhoneNumber();
 
-        long amount=1000L;
+        Long amount=1000L;
         String userName="Abhishek Kaushik";
         String email="kaushik2abhI@gmail.com";
         String phoneNumber="+91XXXXXXXXXX";
 
+
         PaymentGatewayInterface paymentGateWaysInterface=new RazorPayPaymentGateway();
-        String paymentLink=paymentGateWaysInterface.createPaymentLink(amount,userName,email,phoneNumber);
-        return "";
+        PaymentLink paymentLink= paymentGateWaysInterface.createPaymentLink(amount,userName,email,phoneNumber);
+     return  "";
     }
+
 
     public PaymentStuatus checkPaymentStatus(Long paymentId){
         return PaymentStuatus.SUCCESS;

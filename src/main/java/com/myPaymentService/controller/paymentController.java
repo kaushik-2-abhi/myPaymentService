@@ -17,7 +17,7 @@ public class paymentController {
     private  PaymentService paymentService;
 
     @PostMapping("/createpaymentlink")
-    public CreatePaymentLinkResponseDto createPaymentLink(CreatePaymentLinkRequestDto createPaymentLinkRequestDto) throws JSONException, RazorpayException {
+    public CreatePaymentLinkResponseDto createPaymentLink(@RequestBody CreatePaymentLinkRequestDto createPaymentLinkRequestDto) throws JSONException, RazorpayException {
 
         String paymentLink= paymentService. createPaymentLink(createPaymentLinkRequestDto.getOrderId());
 
