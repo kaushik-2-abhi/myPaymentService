@@ -4,7 +4,9 @@ import com.myPaymentService.dto.CreatePaymentLinkRequestDto;
 import com.myPaymentService.dto.CreatePaymentLinkResponseDto;
 import com.myPaymentService.model.PaymentStuatus;
 import com.myPaymentService.service.PaymentService;
+import com.razorpay.RazorpayException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,9 +17,9 @@ public class paymentController {
     private  PaymentService paymentService;
 
     @PostMapping("/createpaymentlink")
-    public CreatePaymentLinkResponseDto createPaymentLink(CreatePaymentLinkRequestDto createPaymentLinkRequestDto){
+    public CreatePaymentLinkResponseDto createPaymentLink(CreatePaymentLinkRequestDto createPaymentLinkRequestDto) throws JSONException, RazorpayException {
 
-        String paymentLink= paymentService.createPaymentLink(createPaymentLinkRequestDto.getOrderId());
+        String paymentLink= paymentService. createPaymentLink(createPaymentLinkRequestDto.getOrderId());
 
         CreatePaymentLinkResponseDto response=new CreatePaymentLinkResponseDto();
         response.setPaymentLinkUrl(paymentLink);

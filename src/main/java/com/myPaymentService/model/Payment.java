@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Payment {
+public class Payment extends BaseClass {
 
     Long orderId;
     Long amount;
