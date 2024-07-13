@@ -8,7 +8,7 @@ import org.springframework.boot.configurationprocessor.json.JSONException;
 public interface PaymentGatewayInterface {
 
 
-    public PaymentLink createPaymentLink(Long amount, String userName, String emailId, String PhoneNumber) throws JSONException, RazorpayException;
+    public PaymentLink createPaymentLink(Long amount, String userName, String emailId, String PhoneNumber, Long orderId) throws JSONException, RazorpayException;
 
 
     public PaymentStuatus getPaymentStatus();
