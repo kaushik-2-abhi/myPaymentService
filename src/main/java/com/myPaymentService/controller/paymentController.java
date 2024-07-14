@@ -2,6 +2,7 @@ package com.myPaymentService.controller;
 
 import com.myPaymentService.dto.CreatePaymentLinkRequestDto;
 import com.myPaymentService.dto.CreatePaymentLinkResponseDto;
+import com.myPaymentService.model.Payment;
 import com.myPaymentService.model.PaymentStuatus;
 import com.myPaymentService.service.PaymentService;
 import com.razorpay.RazorpayException;
@@ -29,11 +30,12 @@ public class paymentController {
     }
 
     @GetMapping("/{Id}")
-    public PaymentStuatus checkPaymentStatus(@PathVariable("Id") Long paymentId){
+    public PaymentStuatus checkPaymentStatus(@PathVariable("Id") String razorpayReferenceId, @RequestParam("orderId") Long orderId) throws RazorpayException {
 
-
-        return paymentService.checkPaymentStatus(paymentId);
+        return paymentService.checkPaymentStatus(razorpayReferenceId,orderId);
     }
+
+
 
 
 }

@@ -2,9 +2,7 @@ package com.myPaymentService.paymentGateways;
 
 
 import com.myPaymentService.model.PaymentStuatus;
-import com.razorpay.PaymentLink;
-import com.razorpay.RazorpayClient;
-import com.razorpay.RazorpayException;
+import com.razorpay.*;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,16 +54,33 @@ public class RazorPayPaymentGateway implements PaymentGatewayInterface {
 
     }
 
-    public PaymentStuatus getPaymentStatus() {
-        return null;
+    public PaymentStuatus getPaymentStatus(String razorPayReferenceId) throws RazorpayException {
+
+//        String secret = "${RAZORPAY_KEY_SECRET}";
+//
+//        JSONObject options = new JSONObject();
+//
+//        options.put("razorpay_payment_id", "pay_IH4NVgf4Dreq1l");
+//        options.put("razorpay_signature", "0d4e745a1838664ad6c9c9902212a32d627d68e917290b0ad5f08ff4561bc50f");
+//
+//        boolean status =  Utils.verifyPaymentSignature(options, secret);
+
+         Payment payment= razorpayClient.payments.fetch(razorPayReferenceId);
+        if (payment.get("status").equals("captured")){
+            return PaymentStuatus.SUCCESS;}
+            else{
+                return PaymentStuatus.FAILURE;
+            }
+
+
 
     }
 
-//    public static String getReferenceId(){
+//    public static String getOrderId(){
 //        Random random = new Random();
 //        Integer refId = random.nextInt(1, 10000);
-//        String referenceId = refId.toString();
-//        return referenceId;
+//        String orderId = refId.toString();
+//        return orderId;
 //    }
 }
 

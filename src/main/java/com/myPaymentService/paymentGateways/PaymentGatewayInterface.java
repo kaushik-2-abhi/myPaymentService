@@ -11,6 +11,6 @@ public interface PaymentGatewayInterface {
     public PaymentLink createPaymentLink(Long amount, String userName, String emailId, String PhoneNumber, Long orderId) throws JSONException, RazorpayException;
 
 
-    public PaymentStuatus getPaymentStatus();
+    public PaymentStuatus getPaymentStatus(String razorPayReferenceId) throws RazorpayException;
 
 }

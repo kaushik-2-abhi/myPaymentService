@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component;
 @Data
 public class CreatePaymentLinkRequestDto {
 
-    Long orderId;
+  Long orderId;
 }
