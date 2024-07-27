@@ -34,7 +34,7 @@ public class PaymentService {
 
         Long amount = 1000L;
         String userName = "Abhishek Kaushik";
-        String email = "kaushik2abhI@gmail.com";
+        String email = "";
         String phoneNumber = "+91XXXXXXXXXX";
 
 
